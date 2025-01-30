@@ -55,4 +55,33 @@ public class Grille {
 	public void setGardiens(HashMap<Case, Gardien> gardiens) {
 		this.gardiens = gardiens;
 	}
+	
+    public void addIntrus(Intrus intrus) {
+        if (intrus != null) {
+            Coordonnee position = intrus.getPosition();
+            Case caseIntrus = getCase(position);
+            if (caseIntrus != null) {
+                this.intrus.put(caseIntrus, intrus);
+            }
+        }
+    }
+
+    public void suppIntrus(Intrus intrus) {
+        if (intrus != null) {
+            Coordonnee position = intrus.getPosition();
+            Case caseIntrus = getCase(position);
+            if (caseIntrus != null) {
+                this.intrus.remove(caseIntrus);
+            }
+        }
+    }
+	
+	public Case getCase(Coordonnee position) {
+		int ligne = position.getX();
+		int colonne = position.getX();
+		if (ligne >= 0 && ligne < nbLigne && colonne >= 0 && colonne < nbColonne) { 
+			return cases[ligne][colonne];
+		}
+		return null;
+	}
 }
