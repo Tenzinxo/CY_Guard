@@ -1,5 +1,5 @@
 package personnage;
 
-public class guardian {
+public class gardiens {
 
 }
