@@ -77,8 +77,8 @@ public class Grille {
     }
 	
 	public Case getCase(Coordonnee position) {
-		int ligne = position.getX();
-		int colonne = position.getX();
+		int ligne = position.getLigne();
+		int colonne = position.getColonne();
 		if (ligne >= 0 && ligne < nbLigne && colonne >= 0 && colonne < nbColonne) { 
 			return cases[ligne][colonne];
 		}
