@@ -4,7 +4,7 @@
 package util;
 
 /**
- * 
+ * Test
  */
 public class Coordonnee {
 	private int x;
