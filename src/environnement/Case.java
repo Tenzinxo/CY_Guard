@@ -1,6 +1,7 @@
 package environnement;
 
 import environnement.obstacle.Obstacle;
+import environnement.obstacle.Plaine;
 import util.Coordonnee;
 
 /**
@@ -10,9 +11,9 @@ public class Case {
 	private Coordonnee position;
 	private Obstacle obstacle;
 	
-	public Case(Coordonnee position, Obstacle obstacle) {
+	public Case(Coordonnee position) {
 		this.position = position;
-		this.obstacle = obstacle;
+		this.obstacle = new Plaine(); // On initialise les plaines comme obstacles par défaut, on les remplacera plus tard dans le code.
 	}
 	
 	public Coordonnee getPosition() {
