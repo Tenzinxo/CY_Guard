@@ -2,7 +2,7 @@ package environnement;
 
 import personnage.Gardien;
 import personnage.Intrus;
-import util.Coordonnee;
+import utilitaire.Coordonnee;
 
 import java.util.HashMap;
 

@@ -1,6 +1,6 @@
 package personnage;
 
-import util.Coordonnee;
+import utilitaire.Coordonnee;
 
 public abstract class Personnage {
 	

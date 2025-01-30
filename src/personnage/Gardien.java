@@ -1,8 +1,8 @@
 package personnage;
 
-import util.Coordonnee;
-
 import java.util.LinkedList;
+
+import utilitaire.Coordonnee;
 
 public class Gardien extends Personnage {
 	

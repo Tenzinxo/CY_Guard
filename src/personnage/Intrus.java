@@ -1,6 +1,6 @@
 package personnage;
 
-import util.Coordonnee;
+import utilitaire.Coordonnee;
 
 public class Intrus extends Personnage {
 

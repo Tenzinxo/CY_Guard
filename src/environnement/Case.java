@@ -2,7 +2,7 @@ package environnement;
 
 import environnement.obstacle.Obstacle;
 import environnement.obstacle.Plaine;
-import util.Coordonnee;
+import utilitaire.Coordonnee;
 
 /**
  * Représente une case de la grille.
