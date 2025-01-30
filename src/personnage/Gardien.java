@@ -11,8 +11,8 @@ public class Gardien extends Personnage {
 
 	private int nbIntrusCapture;
 
-	public Gardien(String name, Coordonnee position, long tempsInvocation) {
-		super(name, position, tempsInvocation);
+	public Gardien(Coordonnee position, long tempsInvocation) {
+		super(position, tempsInvocation);
 	}
 	
 	public int getNbIntrusCapture() {

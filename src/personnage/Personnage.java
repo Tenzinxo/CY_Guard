@@ -1,11 +1,12 @@
 package personnage;
 
 import utilitaire.Coordonnee;
+import utilitaire.GenerateurNom;
 
 public abstract class Personnage {
 	
 	private Coordonnee position;
-	private String name;
+	private String name = GenerateurNom.genererNom();
 	private long tempsInvocation;
 	
 	public Coordonnee getPosition() {
@@ -24,8 +25,7 @@ public abstract class Personnage {
 		return tempsInvocation;
 	}
 
-	public Personnage(String name, Coordonnee position, long tempsInvocation) {
-		this.name = name;
+	public Personnage(Coordonnee position, long tempsInvocation) {
 		this.position = position;
 		this.tempsInvocation = tempsInvocation;
 	}
