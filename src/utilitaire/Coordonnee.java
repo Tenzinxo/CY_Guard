@@ -4,32 +4,32 @@ package utilitaire;
  * Test
  */
 public class Coordonnee {
-	private int x;
-	private int y;
+	private int ligne;
+	private int colonne;
 	
-	public Coordonnee(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Coordonnee(int ligne, int colonne) {
+		this.ligne = ligne;
+		this.colonne = colonne;
 	}
 	
-	public int getX() {
-		return x;
+	public int getLigne() {
+		return ligne;
 	}
 	
-	public int getY() {
-		return y;
+	public int getColonne() {
+		return colonne;
 	}
 	
-	public void setX(int x) {
-		this.x = x;	
+	public void setLigne(int ligne) {
+		this.ligne = ligne;	
 	}
 	
-	public void setY(int y) {
-		this.y = y;
+	public void setColonne(int colonne) {
+		this.colonne = colonne;
 	}
 	
 	public boolean equals(Coordonnee coordonnee) {
-		if (this.x == coordonnee.getX() && this.y == coordonnee.getY()) {
+		if (this.ligne == coordonnee.getLigne() && this.colonne == coordonnee.getColonne()) {
 			return true;
 		}
 		return false;
