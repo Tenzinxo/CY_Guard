@@ -68,4 +68,8 @@ public class Grille {
 	public Case[][] getCases() {
 		return this.cases;
 	}
+	
+	public void setCases(Case[][] cases) {
+		this.cases = cases;
+	}
 }
