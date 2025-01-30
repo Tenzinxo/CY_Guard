@@ -1,4 +1,4 @@
-package perso;
+package personnage;
 
 public class guardian {
 
