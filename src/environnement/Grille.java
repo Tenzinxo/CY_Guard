@@ -56,32 +56,16 @@ public class Grille {
 		this.gardiens = gardiens;
 	}
 	
-    public void addIntrus(Intrus intrus) {
-        if (intrus != null) {
-            Coordonnee position = intrus.getPosition();
-            Case caseIntrus = getCase(position);
-            if (caseIntrus != null) {
-                this.intrus.put(caseIntrus, intrus);
-            }
-        }
-    }
-
-    public void suppIntrus(Intrus intrus) {
-        if (intrus != null) {
-            Coordonnee position = intrus.getPosition();
-            Case caseIntrus = getCase(position);
-            if (caseIntrus != null) {
-                this.intrus.remove(caseIntrus);
-            }
-        }
-    }
-	
-	public Case getCase(Coordonnee position) {
+	public Case getCasefromCoordonnee(Coordonnee position) {
 		int ligne = position.getLigne();
 		int colonne = position.getColonne();
 		if (ligne >= 0 && ligne < nbLigne && colonne >= 0 && colonne < nbColonne) { 
 			return cases[ligne][colonne];
 		}
 		return null;
+	}
+	
+	public Case[][] getCases() {
+		return this.cases;
 	}
 }
