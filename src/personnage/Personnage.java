@@ -1,20 +1,25 @@
 package personnage;
 
-import utilitaire.Coordonnee;
 import utilitaire.GenerateurNom;
+import environnement.Case;
 
 public abstract class Personnage {
 	
-	private Coordonnee position;
+	private Case caseActuel;
 	private String name = GenerateurNom.genererNom();
 	private long tempsInvocation;
 	
-	public Coordonnee getPosition() {
-		return position;
+	public Personnage(Case caseActuel, long tempsInvocation) {
+		this.caseActuel = caseActuel;
+		this.tempsInvocation = tempsInvocation;
+	}
+	
+	public Case getCase() {
+		return caseActuel;
 	}
 
-	public void setPosition(Coordonnee position) {
-		this.position = position;
+	public void setCase(Case caseActuel) {
+		this.caseActuel = caseActuel;
 	}
 
 	public String getName() {
@@ -23,10 +28,5 @@ public abstract class Personnage {
 
 	public long getTempsInvocation() {
 		return tempsInvocation;
-	}
-
-	public Personnage(Coordonnee position, long tempsInvocation) {
-		this.position = position;
-		this.tempsInvocation = tempsInvocation;
 	}
 }
