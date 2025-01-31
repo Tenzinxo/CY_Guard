@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Grille {
 	
-	private Case[][] cases;
+	private Case[][] grille;
 	private int nbLigne;
 	private int nbColonne;
 	
@@ -21,7 +21,7 @@ public class Grille {
 			for (int columnIndex = 0; columnIndex < nbColonne; columnIndex++) {
 				
 				Coordonnee position = new Coordonnee(nbLigne, nbColonne);
-				cases[lineIndex][columnIndex] = new Case(position);
+				grille[lineIndex][columnIndex] = new Case(position);
 			}
 		}
 	}
@@ -29,7 +29,7 @@ public class Grille {
 	private void init(int nbLigne, int nbColonne) {
 		this.nbLigne = nbLigne;	
 		this.nbColonne = nbColonne;
-		this.cases = new Case[nbLigne][nbColonne];
+		this.grille = new Case[nbLigne][nbColonne];
 	}
 	
 	public int getNbLigne() {
@@ -60,16 +60,16 @@ public class Grille {
 		int ligne = position.getLigne();
 		int colonne = position.getColonne();
 		if (ligne >= 0 && ligne < nbLigne && colonne >= 0 && colonne < nbColonne) { 
-			return cases[ligne][colonne];
+			return grille[ligne][colonne];
 		}
 		return null;
 	}
 	
-	public Case[][] getCases() {
-		return this.cases;
+	public Case[][] getgrille() {
+		return this.grille;
 	}
 	
-	public void setCases(Case[][] cases) {
-		this.cases = cases;
+	public void setgrille(Case[][] grille) {
+		this.grille = grille;
 	}
 }
