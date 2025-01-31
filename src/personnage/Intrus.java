@@ -1,10 +1,10 @@
 package personnage;
 
-import utilitaire.Coordonnee;
+import environnement.Case;
 
 public class Intrus extends Personnage {
 
-	public Intrus(Coordonnee position, long tempsInvocation) {
-		super(position, tempsInvocation);
+	public Intrus(Case caseActuelle) {
+		super(caseActuelle);
 	}
 }

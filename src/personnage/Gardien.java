@@ -1,8 +1,8 @@
 package personnage;
 
-import java.util.LinkedList;
+import environnement.Case;
 
-import utilitaire.Coordonnee;
+import java.util.LinkedList;
 
 public class Gardien extends Personnage {
 	
@@ -11,8 +11,8 @@ public class Gardien extends Personnage {
 
 	private int nbIntrusCapture;
 
-	public Gardien(Coordonnee position, long tempsInvocation) {
-		super(position, tempsInvocation);
+	public Gardien(Case caseActuelle) {
+		super(caseActuelle);
 	}
 	
 	public int getNbIntrusCapture() {
