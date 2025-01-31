@@ -6,12 +6,13 @@ import environnement.Case;
 public abstract class Personnage {
 	
 	private Case caseActuel;
-	private String name = GenerateurNom.genererNom();
+	private String name;
 	private long tempsInvocation;
 	
-	public Personnage(Case caseActuel, long tempsInvocation) {
+	public Personnage(Case caseActuel) {
 		this.caseActuel = caseActuel;
-		this.tempsInvocation = tempsInvocation;
+		this.name = GenerateurNom.genererNom();
+		this.tempsInvocation = System.currentTimeMillis();
 	}
 	
 	public Case getCase() {
