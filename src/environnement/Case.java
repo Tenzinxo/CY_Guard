@@ -31,4 +31,8 @@ public class Case {
 	public void setObstacle(Obstacle obstacle) {
 		this.obstacle = obstacle;
 	}
+	
+	public boolean equals(Case caseGrille) {
+		return this.position.equals(caseGrille.getPosition());
+	}
 }
