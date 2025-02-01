@@ -61,8 +61,11 @@ public class MapManager {
 	}
 
 	private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
-		// TODO Auto-generated method stub
-		return null;
+		if (coordonnees == null || coordonnees.isEmpty()) {
+			return null;
+		}
+		int index = (int) (Math.random() * coordonnees.size());
+		return coordonnees.get(index);
 	}
 
 	private List<Coordonnee> getCasesAdjacentes(Coordonnee coordAleatoire, int nbCaseDensite) {
