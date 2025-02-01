@@ -7,10 +7,11 @@ import config.GameConfiguration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapManager {
 	private Grille grille;
-	private HashMap<Double, List<Coordonnee>> listeProbaCoordonnee = new HashMap<>();
+	private Map<Double, List<Coordonnee>> listeProbaCoordonnee = new HashMap<>();
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
