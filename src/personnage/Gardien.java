@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class Gardien extends Personnage {
 	
-	//	Un FIFO
+	//	Un FIFO 
 	private LinkedList<Intrus> cibles;
 
 	private int nbIntrusCapture;
