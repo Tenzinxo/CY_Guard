@@ -1,10 +1,12 @@
 package environnement;
 
+import personnage.Personnage;
 import personnage.Gardien;
 import personnage.Intrus;
 import utilitaire.Coordonnee;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Grille {
 	
@@ -12,8 +14,8 @@ public class Grille {
 	private int nbLigne;
 	private int nbColonne;
 	
-	private HashMap<Case, Intrus> intrus = new HashMap<Case, Intrus>();
-	private HashMap<Case, Gardien> gardiens = new HashMap<Case, Gardien>();
+    private List<Intrus> intrus = new ArrayList<>();
+    private List<Gardien> gardiens = new ArrayList<>();
 	
 	public Grille(int nbLigne, int nbColonne) {
 		init(nbLigne, nbColonne);
@@ -39,24 +41,28 @@ public class Grille {
 	public int getNbColonne() {
 		return nbColonne;
 	}
+
+	public void ajouterIntrus(Intrus intrus) {
+        this.intrus.add(intrus);
+    }
 	
-	public HashMap<Case, Intrus> getIntrus() {
-		return this.intrus;
-	}
+	public List<Intrus> getIntrus() {
+        return this.intrus;
+    }
 	
-	public void setIntrus(HashMap<Case, Intrus> intrus) {
-		this.intrus = intrus;
-	}
+	public void retirerIntrus(Intrus intrus) {
+        this.intrus.remove(intrus);
+    }
 	
-	public HashMap<Case, Gardien> getGardiens() {
-		return this.gardiens;
-	}
+	public void ajouterGardien(Gardien gardien) {
+        this.gardiens.add(gardien);
+    }
+
+    public List<Gardien> getGardiens() {
+        return this.gardiens;
+    }
 	
-	public void setGardiens(HashMap<Case, Gardien> gardiens) {
-		this.gardiens = gardiens;
-	}
-	
-	public Case getCasefromCoordonnee(Coordonnee position) {
+	public Case getCase(Coordonnee position) {
 		int ligne = position.getLigne();
 		int colonne = position.getColonne();
 		if (ligne >= 0 && ligne < nbLigne && colonne >= 0 && colonne < nbColonne) { 
@@ -72,4 +78,27 @@ public class Grille {
 	public void setgrille(Case[][] grille) {
 		this.grille = grille;
 	}
+	
+	public List<Personnage> getPersonnages(Coordonnee coordonnee) {
+        List<Personnage> personnages = new ArrayList<>();
+        Case caseRecherchee = getCase(coordonnee);
+        
+        if (caseRecherchee != null) {
+        	return null;
+        }
+        
+        for (Intrus intrus : this.intrus) {
+            if (intrus.getCase().equals(caseRecherchee)) {
+                personnages.add(intrus);
+            }
+        }
+        
+        for (Gardien gardien : this.gardiens) {
+            if (gardien.getCase().equals(caseRecherchee)) {
+                personnages.add(gardien);
+            }
+        }
+        
+        return personnages;
+    }
 }
