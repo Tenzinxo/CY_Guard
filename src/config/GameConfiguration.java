@@ -11,6 +11,7 @@ public class GameConfiguration {
 	public static final int VITESSE_GARDIENS = 12;
 	
 	public static final int DIFFICULTE = 1;
+	public static final int NB_CASE_DENSITE = 5;
 	
 	public static final int NB_LIGNE = 25;
 	public static final int NB_COLONNE = 25;
