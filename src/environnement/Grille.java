@@ -83,7 +83,7 @@ public class Grille {
         List<Personnage> personnages = new ArrayList<>();
         Case caseRecherchee = getCase(coordonnee);
         
-        if (caseRecherchee != null) {
+        if (caseRecherchee == null) {
         	return null;
         }
         
