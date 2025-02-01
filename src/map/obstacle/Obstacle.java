@@ -2,13 +2,13 @@ package map.obstacle;
 
 public abstract class Obstacle {
 	private String type;
-	private boolean BloqueVision;
-	private boolean BloqueDeplacement;
+	private boolean bloqueVision;
+	private boolean bloqueDeplacement;
 	
 	public Obstacle(String type, boolean isBloqueVision, boolean isBloqueDeplacement) {
 		this.type = type;
-		this.BloqueVision = isBloqueVision;
-		this.BloqueDeplacement = isBloqueDeplacement;
+		this.bloqueVision = isBloqueVision;
+		this.bloqueDeplacement = isBloqueDeplacement;
 	}
 
 	public String getType() {
@@ -16,10 +16,10 @@ public abstract class Obstacle {
 	}
 
 	public boolean isBloqueVision() {
-		return BloqueVision;
+		return bloqueVision;
 	}
 
 	public boolean isBloqueDeplacement() {
-		return BloqueDeplacement;
+		return bloqueDeplacement;
 	}
 }
