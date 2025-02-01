@@ -19,9 +19,9 @@ public class MapManager {
     }
 	
 	public void genererCarte() {
-		placerObstacles("Lac", GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
-		placerObstacles("Roche", GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
-		placerObstacles("Arbre", GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
+		placerObstacles(GameConfiguration.LAC, GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
+		placerObstacles(GameConfiguration.ROCHE, GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
+		placerObstacles(GameConfiguration.ARBRE, GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
 	}
 	
     private void initProba() {
@@ -29,7 +29,7 @@ public class MapManager {
         for (int i = 0; i < GameConfiguration.NB_LIGNE; i++) {
             for (int j = 0; j < GameConfiguration.NB_COLONNE; j++) {
                 Coordonnee position = new Coordonnee(i, j);
-                if (grille.getCase(position).getObstacle().getType().equals("Plaine")) {
+                if (grille.getCase(position).getObstacle().equals(GameConfiguration.PLAINE)) {
                     coordonnees.add(position);
                 }
             }
@@ -38,15 +38,43 @@ public class MapManager {
         MapProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
-	private void placerObstacles(String typeObstacle, int nombreObstacles, int densite) {
+	private void placerObstacles(Obstacle obstacle, int nombreObstacles, int densite) {
 		initProba();
 		int obstaclesPlaces = 0;
         while (obstaclesPlaces < nombreObstacles) {
-        	double valeurAleatoire = getValeurAleatoire();
-        	return;
+            List<Coordonnee> coordonnees = getListeProba(getValeurAleatoire());
+            if (coordonnees != null && !coordonnees.isEmpty()) {
+                Coordonnee coordAleatoire = getCoordonneeAleatoire(coordonnees);
+                if (coordAleatoire != null) {
+	                grille.getCase(coordAleatoire).setObstacle(obstacle);
+	                List<Coordonnee> casesAdjacentes = getCasesAdjacentes(coordAleatoire, GameConfiguration.NB_CASE_DENSITE);
+	                augmenterProbabilite(casesAdjacentes, densite);
+	                obstaclesPlaces++;
+                }
+            }
         }
     }
-	
+
+	private List<Coordonnee> getListeProba(double valeurAleatoire) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private List<Coordonnee> getCasesAdjacentes(Coordonnee coordAleatoire, int nbCaseDensite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private void augmenterProbabilite(List<Coordonnee> casesAdjacentes, int densite) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private static double getValeurAleatoire() {
 	    return (double) Math.random() * 100;
 	}
