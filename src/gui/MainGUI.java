@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JFrame;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -12,26 +14,48 @@ import environnement.Grille;
 
 public class MainGUI extends JFrame implements Runnable{
 	
-	private static Dimension preferredsize = new Dimension(GameConfiguration.WINDOW_WIDTH,GameConfiguration.WINDOW_HEIGHT);
+	private static Dimension preferredSize = new Dimension(GameConfiguration.WINDOW_WIDTH,GameConfiguration.WINDOW_HEIGHT);
 	
 	
 	private Grille grille;
+	
+	private GameDisplay dashboard;
 	
 	
 
 	public MainGUI(String title) throws HeadlessException {
 		super(title);
+		this.grille = new Grille(GameConfiguration.WINDOW_WIDTH,GameConfiguration.WINDOW_HEIGHT);
 		init();
-		// TODO Auto-generated constructor stub
 	}
 
 	private void init() {
+		Container contentPane = getContentPane();
+		contentPane.setLayout(new BorderLayout());
+		
+		dashboard = new GameDisplay(grille);
+		
+		dashboard.setPreferredSize(preferredSize);
+		contentPane.add(dashboard,BorderLayout.CENTER);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+		setVisible(true);
+		setPreferredSize(preferredSize);
+		setResizable(false);
 		
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		while(true) {
+			try {
+				Thread.sleep(GameConfiguration.GAME_SPEED);
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+			dashboard.repaint();
+		}
 		
 	}
 	

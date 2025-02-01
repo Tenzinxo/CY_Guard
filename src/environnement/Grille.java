@@ -8,6 +8,12 @@ import utilitaire.Coordonnee;
 import java.util.ArrayList;
 import java.util.List;
 
+import environnement.obstacle.Arbre;
+import environnement.obstacle.Lac;
+import environnement.obstacle.Obstacle;
+import environnement.obstacle.Roche;
+
+
 public class Grille {
 	
 	private Case[][] grille;
@@ -22,11 +28,22 @@ public class Grille {
 		for (int lineIndex = 0; lineIndex < nbLigne; lineIndex++) {
 			for (int columnIndex = 0; columnIndex < nbColonne; columnIndex++) {
 				
-				Coordonnee position = new Coordonnee(nbLigne, nbColonne);
-				grille[lineIndex][columnIndex] = new Case(position);
+				Coordonnee position = new Coordonnee(lineIndex, columnIndex);
+				grille[lineIndex][columnIndex] = new Case(position);	
 			}
 		}
+		// ca c'est pour tester les obstacles
+		addObstacle(new Coordonnee(1, 1), new Arbre());
+        addObstacle(new Coordonnee(1, 2), new Lac());
+        addObstacle(new Coordonnee(1, 3), new Roche());
 	}
+	
+	public void addObstacle(Coordonnee position, Obstacle obstacle) {
+        Case cell = getCase(position);
+        if (cell != null) {
+            cell.setObstacle(obstacle);
+        }
+    }
 	
 	private void init(int nbLigne, int nbColonne) {
 		this.nbLigne = nbLigne;	

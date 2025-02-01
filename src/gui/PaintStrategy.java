@@ -6,6 +6,10 @@ import java.awt.Graphics;
 import config.GameConfiguration;
 import environnement.Case;
 import environnement.Grille;
+import environnement.obstacle.Arbre;
+import environnement.obstacle.Lac;
+import environnement.obstacle.Obstacle;
+import environnement.obstacle.Roche;
 
 public class PaintStrategy {
 	
@@ -18,14 +22,24 @@ public class PaintStrategy {
 		
 		for (int line = 0; line < nbLigne; line++) {
 			for (int col = 0; col < nbColonne; col++) {
-				Case casecell = cases[line][col];
-				graphics.setColor(Color.black);
+				Case cell = cases[line][col];
+				Obstacle obstacle = cell.getObstacle();
+				
+				
+				 if (obstacle instanceof Arbre) {
+	                    graphics.setColor(Color.green);
+				 } else if (obstacle instanceof Lac) {
+	                    graphics.setColor(Color.blue);
+				 } else if (obstacle instanceof Roche) {
+	                    graphics.setColor(Color.gray);
+				 } else {
+	                    graphics.setColor(Color.yellow);
+				 }
+
+				 graphics.fillRect(col * blocksize, line * blocksize, blocksize, blocksize);
 			}
 		}
 		
-		
-		
-		//completer
 	};
 	
 	
