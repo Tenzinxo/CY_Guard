@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MapManager {
 	private Grille grille;
-	private Map<Double, List<Coordonnee>> listeProbaCoordonnee = new HashMap<>();
+	private Map<Double, List<Coordonnee>> MapProbaCoordonnee = new HashMap<>();
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
@@ -35,7 +35,7 @@ public class MapManager {
             }
         }
         double probaInitiale = 100.0;
-        listeProbaCoordonnee.put(probaInitiale, coordonnees);
+        MapProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
 	private void placerObstacles(String typeObstacle, int nombreObstacles, int densite) {
