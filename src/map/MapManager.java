@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class MapManager {
 	private Grille grille;
-    private TreeMap<Double, Set<Coordonnee>> probaCases = new TreeMap<>();
+    private TreeMap<Double, Set<Coordonnee>> probaCoordonnee = new TreeMap<>();
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
@@ -28,7 +28,7 @@ public class MapManager {
             }
         }
         double probaInitiale = 100.0 / (GameConfiguration.NB_LIGNE * GameConfiguration.NB_COLONNE);
-        probaCases.put(probaInitiale, coordonnees);
+        probaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
 	public void genererCarte() {
