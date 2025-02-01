@@ -8,6 +8,7 @@ public abstract class Personnage {
 	private Case caseActuel;
 	private String name;
 	private long tempsInvocation;
+	private int vitesse;
 	
 	public Personnage(Case caseActuel) {
 		this.caseActuel = caseActuel;
@@ -29,5 +30,13 @@ public abstract class Personnage {
 
 	public long getTempsInvocation() {
 		return tempsInvocation;
+	}
+	
+	public long getVitesse() {
+		return vitesse;
+	}
+	
+	public void setVitesse(int vitesse) {
+		this.vitesse = vitesse;
 	}
 }

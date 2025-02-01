@@ -1,6 +1,7 @@
 package personnage;
 
 import environnement.Case;
+import config.GameConfiguration;
 
 import java.util.LinkedList;
 
@@ -13,6 +14,7 @@ public class Gardien extends Personnage {
 
 	public Gardien(Case caseActuelle) {
 		super(caseActuelle);
+		setVitesse(GameConfiguration.GARDIENS_SPEED);
 	}
 	
 	public int getNbIntrusCapture() {
