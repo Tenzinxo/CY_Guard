@@ -14,7 +14,7 @@ public class Gardien extends Personnage {
 
 	public Gardien(Case caseActuelle) {
 		super(caseActuelle);
-		setVitesse(GameConfiguration.GARDIENS_SPEED);
+		setVitesse(GameConfiguration.VITESSE_GARDIENS);
 	}
 	
 	public int getNbIntrusCapture() {
