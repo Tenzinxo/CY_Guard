@@ -1,4 +1,4 @@
-package environnement.obstacle;
+package map.obstacle;
 
 public class Roche extends Obstacle {
 	

@@ -1,4 +1,4 @@
-package environnement;
+package map;
 
 import personnage.Personnage;
 import personnage.Gardien;

@@ -1,7 +1,7 @@
-package environnement;
+package map;
 
-import environnement.obstacle.Obstacle;
-import environnement.obstacle.Plaine;
+import map.obstacle.Obstacle;
+import map.obstacle.Plaine;
 import utilitaire.Coordonnee;
 
 /**

@@ -1,4 +1,4 @@
-package environnement.obstacle;
+package map.obstacle;
 
 public abstract class Obstacle {
 	private String type;

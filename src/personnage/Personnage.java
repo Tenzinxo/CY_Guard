@@ -1,7 +1,7 @@
 package personnage;
 
+import map.Case;
 import utilitaire.GenerateurNom;
-import environnement.Case;
 
 public abstract class Personnage {
 	
