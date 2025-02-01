@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MapManager {
 	private Grille grille;
-	private Map<Double, List<Coordonnee>> MapProbaCoordonnee = new HashMap<>();
+	private Map<Double, List<Coordonnee>> mapProbaCoordonnee = new HashMap<>();
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
@@ -35,7 +35,7 @@ public class MapManager {
             }
         }
         double probaInitiale = 100.0;
-        MapProbaCoordonnee.put(probaInitiale, coordonnees);
+        mapProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
 	private void placerObstacles(Obstacle obstacle, int nombreObstacles, int densite) {
@@ -56,8 +56,17 @@ public class MapManager {
     }
 
 	private List<Coordonnee> getListeProba(double valeurAleatoire) {
-		// TODO Auto-generated method stub
-		return null;
+		double sommeProbabilite = 0.0;
+		// On veut récupérer toute nos clé qui font en tout 100 
+		// On les sommes jusqu'à avoir un chiffre <= à notre nombre aléatoire
+        for (Double probabilite : mapProbaCoordonnee.keySet()) {
+            sommeProbabilite += probabilite;
+            if (valeurAleatoire <= sommeProbabilite) {
+            	// On retourne la liste de coordonnée qui est associé à cette probabilité
+                return mapProbaCoordonnee.get(probabilite);
+            }
+        }
+        return null;
 	}
 
 	private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
