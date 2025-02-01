@@ -14,9 +14,15 @@ public class MapManager {
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
-        initProba();
+        genererCarte();
     }
-
+	
+	public void genererCarte() {
+		placerObstacles("Lac", GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
+		placerObstacles("Roche", GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
+		placerObstacles("Arbre", GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
+	}
+	
     private void initProba() {
         List<Coordonnee> coordonnees = new ArrayList<>();
         for (int i = 0; i < GameConfiguration.NB_LIGNE; i++) {
@@ -31,15 +37,11 @@ public class MapManager {
         listeProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
-	public void genererCarte() {
-		placerObstacles("Lac", GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
-		placerObstacles("Roche", GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
-		placerObstacles("Arbre", GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
-	}
-	
 	private void placerObstacles(String typeObstacle, int nombreObstacles, int densite) {
+		initProba();
 		int obstaclesPlaces = 0;
         while (obstaclesPlaces < nombreObstacles) {
+        	double valeurAleatoire = getValeurAleatoire();
         	return;
         }
     }
