@@ -4,13 +4,13 @@ import map.obstacle.Obstacle;
 import utilitaire.Coordonnee;
 import config.GameConfiguration;
 
-import java.util.HashSet;
-import java.util.TreeMap;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MapManager {
 	private Grille grille;
-    private TreeMap<Double, Set<Coordonnee>> probaCoordonnee = new TreeMap<>();
+	private HashMap<Double, List<Coordonnee>> probaCoordonnee = new HashMap<>();
 	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
@@ -18,7 +18,7 @@ public class MapManager {
     }
 
     private void initProba() {
-        Set<Coordonnee> coordonnees = new HashSet<>();
+        List<Coordonnee> coordonnees = new ArrayList<>();
         for (int i = 0; i < GameConfiguration.NB_LIGNE; i++) {
             for (int j = 0; j < GameConfiguration.NB_COLONNE; j++) {
                 Coordonnee position = new Coordonnee(i, j);
@@ -27,37 +27,36 @@ public class MapManager {
                 }
             }
         }
-        double probaInitiale = 100.0 / (GameConfiguration.NB_LIGNE * GameConfiguration.NB_COLONNE);
+        double probaInitiale = 100.0;
         probaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
 	public void genererCarte() {
-	    placerLacs();
-	    placerRochers();
-	    placerArbres();
+		placerObstacles("Lac", GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
+		placerObstacles("Roche", GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
+		placerObstacles("Arbre", GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
 	}
 	
-	private void placerLacs() {
-	    
-	}
-
-	private void placerRochers() {
-	    
-	}
-
-	private void placerArbres() {
-	    
+	private void placerObstacles(String typeObstacle, int nombreObstacles, int densite) {
+		int obstaclesPlaces = 0;
+        while (obstaclesPlaces < nombreObstacles) {
+        	return;
+        }
+    }
+	
+	private static double getValeurAleatoire() {
+	    return (double) Math.random() * 100;
 	}
 	
-	// Recuperation de la densité dans config 
-	// Recuperation du nombre de tuiles pour les obstacles
+	// On met une liste de coordonnee avec une proba (au début 100 pour l'ensemble de la liste)
 	
-	// Ajout des trois tuiles aléatoirement 
-	
-	// Faire en sorte d'augmenter la proba du spawn a côté avec un parametre défini dans config pour chaque obstacles
+	// On prend un nombre aléatoire entre 0 et 100 
+	// On prend la treeMap de proba et on va jusqu'a atteindre le chiffre 
+	// On choisi aléatoirement une coordonnées dans cette liste de proba
+	// On met l'obstacle demandé et on le retire de la liste 
+	// On récupère les cases adjacentes(nb_case) pour augmenter leurs proba (confus encore)
 	
 	// Refaire une itération
-	
-	// Boucler jusqu'au nombre de tuiles demandé   ?? A voir si on fait une boucle par tuiles ou de chaque.
+	// Faire une boucle par type de tuile : Lac -> Roche -> Arbre
 	
 }
