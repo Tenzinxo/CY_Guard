@@ -13,6 +13,42 @@ public class MapManager {
 	private Grille grille;
 	private Map<Double, List<Coordonnee>> mapProbaCoordonnee = new HashMap<>();
 	
+	public List<Double> getListeProbabilites() {
+        return new ArrayList<>(mapProbaCoordonnee.keySet());
+    }
+	
+	public List<Coordonnee> getCoordonneesFromProbabilite(Double probabilite) {
+        return mapProbaCoordonnee.get(probabilite);
+    }
+	
+	public void ajouterProbabilite(Double probabilite, List<Coordonnee> coordonnees) {
+        if (probabilite != null && coordonnees != null && !coordonnees.isEmpty()) {
+            mapProbaCoordonnee.put(probabilite, coordonnees);
+        }
+    }
+	
+	public void supprimerCoordonnee(Coordonnee coordonnee) {
+		if (coordonnee == null) {
+			return;
+		}
+		for (Double probabilite : new ArrayList<>(getListeProbabilites())) {
+	        List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
+	        if (coordonnees.remove(coordonnee) == true) {
+	            if (coordonnees.isEmpty()) {
+	                mapProbaCoordonnee.remove(probabilite);
+	            }
+	            break;
+	        }
+	    }
+	}
+	
+	public void supprimerListeCoordonnee(List<Coordonnee> coordonnees) {
+        if (coordonnees == null || coordonnees.isEmpty()) { return; }
+        for (Coordonnee coordonnee : coordonnees) {
+            supprimerCoordonnee(coordonnee);
+        }
+    }
+	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
         genererCarte();
@@ -38,71 +74,63 @@ public class MapManager {
         mapProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
-	private void placerObstacles(Obstacle obstacle, int nombreObstacles, int densite) {
+    private void placerObstacles(Obstacle obstacle, int nombreObstacles, int densite) {
 		initProba();
 		int obstaclesPlaces = 0;
         while (obstaclesPlaces < nombreObstacles) {
-            List<Coordonnee> coordonnees = getListeProba(getValeurAleatoire());
-            if (coordonnees != null && !coordonnees.isEmpty()) {
-                Coordonnee coordAleatoire = getCoordonneeAleatoire(coordonnees);
-                if (coordAleatoire != null) {
-	                grille.getCase(coordAleatoire).setObstacle(obstacle);
-	                List<Coordonnee> casesAdjacentes = getCasesAdjacentes(coordAleatoire, GameConfiguration.NB_CASE_DENSITE);
-	                augmenterProbabilite(casesAdjacentes, densite);
-	                
+        	List<Coordonnee> listeCoordonneeAleatoire = getListeFromValeurAleatoire(getValeurAleatoire());
+        	if (listeCoordonneeAleatoire != null && !listeCoordonneeAleatoire.isEmpty()) {
+        		Coordonnee coordonneeAleatoire = getCoordonneeAleatoire(listeCoordonneeAleatoire);
+        		if (coordonneeAleatoire != null) {
+        			grille.getCase(coordonneeAleatoire).setObstacle(obstacle);
+        			supprimerCoordonnee(coordonneeAleatoire);
+        			List<Coordonnee> coordonneeAdjacentes = getCasesAdjacentes(coordonneeAleatoire);
+        			supprimerListeCoordonnee(coordonneeAdjacentes);
+        			augmenterProbabilite(coordonneeAdjacentes, densite);
 	                obstaclesPlaces++;
-                }
-            }
+        		}
+        	}
         }
     }
 
-	private List<Coordonnee> getListeProba(double valeurAleatoire) {
+	private List<Coordonnee> getListeFromValeurAleatoire(double valeurAleatoire) {
 		double sommeProbabilite = 0.0;
-		// On veut récupérer toute nos clé qui font en tout 100 
-		// On les sommes jusqu'à avoir un chiffre <= à notre nombre aléatoire
-        for (Double probabilite : mapProbaCoordonnee.keySet()) {
+        for (Double probabilite : getListeProbabilites()) {
             sommeProbabilite += probabilite;
             if (valeurAleatoire <= sommeProbabilite) {
-            	// On retourne la liste de coordonnée qui est associé à cette probabilité
-                return mapProbaCoordonnee.get(probabilite);
+                return getCoordonneesFromProbabilite(probabilite);
             }
         }
         return null;
 	}
-
-	private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
+    
+    private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
 		if (coordonnees == null || coordonnees.isEmpty()) {
 			return null;
 		}
 		int index = (int) (Math.random() * coordonnees.size());
 		return coordonnees.get(index);
 	}
-
-	private List<Coordonnee> getCasesAdjacentes(Coordonnee coordonnee, int nbCaseDensite) {
+    
+    private List<Coordonnee> getCasesAdjacentes(Coordonnee coordonnee) {
 		List<Coordonnee> coordonneeAdjacentes = new ArrayList<>();
-		// On doit boucler sur toute les cases entre - la position jusqu'à + la position, en haut et en bas
+		int nbCaseDensite = GameConfiguration.NB_CASE_DENSITE;
+
 		for (int i = -nbCaseDensite; i <= nbCaseDensite; i++) {
 			for (int j = -nbCaseDensite; j <= nbCaseDensite; j++) {
-				if (i == 0 && j == 0) {
-					continue; // il faut enlever la case de la liste principale
-				}
+				if (i == 0 && j == 0) { continue; }
 				Coordonnee coordonneeAdjacente = new Coordonnee(coordonnee.getLigne() + i, coordonnee.getColonne() + j);
 				Case caseAdjacente = grille.getCase(coordonneeAdjacente);
-				if (caseAdjacente != null ){
-					if (caseAdjacente.getObstacle().equals(GameConfiguration.PLAINE)){
-						coordonneeAdjacentes.add(coordonneeAdjacente);
-					}
-					else {
-						// il faut enlever la case de la liste principale (faudrait un check partout)
-					}
+				if (caseAdjacente != null && caseAdjacente.getObstacle().equals(GameConfiguration.PLAINE)){
+					coordonneeAdjacentes.add(coordonneeAdjacente);
 				}
             }
 		}
-		return null;
+		return coordonneeAdjacentes;
 	}
 
-	private void augmenterProbabilite(List<Coordonnee> casesAdjacentes, int densite) {
-		// Regles : il faut toujours avoir la somme des probas à 100
+    private void augmenterProbabilite(List<Coordonnee> coordonneeAdjacentes, int densite) {
+		// TODO Auto-generated method stub
 		
 	}
 
