@@ -42,13 +42,6 @@ public class MapManager {
 	    }
 	}
 	
-	public void supprimerListeCoordonnee(List<Coordonnee> coordonnees) {
-        if (coordonnees == null || coordonnees.isEmpty()) { return; }
-        for (Coordonnee coordonnee : coordonnees) {
-            supprimerCoordonnee(coordonnee);
-        }
-    }
-	
     public MapManager() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
         genererCarte();
@@ -70,7 +63,7 @@ public class MapManager {
                 }
             }
         }
-        double probaInitiale = 100.0;
+        double probaInitiale = 100.0 / coordonnees.size();
         mapProbaCoordonnee.put(probaInitiale, coordonnees);
     }
 	
@@ -85,7 +78,6 @@ public class MapManager {
         			grille.getCase(coordonneeAleatoire).setObstacle(obstacle);
         			supprimerCoordonnee(coordonneeAleatoire);
         			List<Coordonnee> coordonneeAdjacentes = getCasesAdjacentes(coordonneeAleatoire);
-        			supprimerListeCoordonnee(coordonneeAdjacentes);
         			augmenterProbabilite(coordonneeAdjacentes, densite);
 	                obstaclesPlaces++;
         		}
@@ -93,16 +85,17 @@ public class MapManager {
         }
     }
 
-	private List<Coordonnee> getListeFromValeurAleatoire(double valeurAleatoire) {
-		double sommeProbabilite = 0.0;
+    private List<Coordonnee> getListeFromValeurAleatoire(double valeurAleatoire) {
+        double sommeProbabilite = 0.0;
         for (Double probabilite : getListeProbabilites()) {
-            sommeProbabilite += probabilite;
+            List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
+            sommeProbabilite += probabilite * coordonnees.size();
             if (valeurAleatoire <= sommeProbabilite) {
-                return getCoordonneesFromProbabilite(probabilite);
+                return coordonnees;
             }
         }
         return null;
-	}
+    }
     
     private Coordonnee getCoordonneeAleatoire(List<Coordonnee> coordonnees) {
 		if (coordonnees == null || coordonnees.isEmpty()) {
