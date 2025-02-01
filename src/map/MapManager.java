@@ -49,6 +49,7 @@ public class MapManager {
 	                grille.getCase(coordAleatoire).setObstacle(obstacle);
 	                List<Coordonnee> casesAdjacentes = getCasesAdjacentes(coordAleatoire, GameConfiguration.NB_CASE_DENSITE);
 	                augmenterProbabilite(casesAdjacentes, densite);
+	                
 	                obstaclesPlaces++;
                 }
             }
@@ -77,13 +78,31 @@ public class MapManager {
 		return coordonnees.get(index);
 	}
 
-	private List<Coordonnee> getCasesAdjacentes(Coordonnee coordAleatoire, int nbCaseDensite) {
-		// TODO Auto-generated method stub
+	private List<Coordonnee> getCasesAdjacentes(Coordonnee coordonnee, int nbCaseDensite) {
+		List<Coordonnee> coordonneeAdjacentes = new ArrayList<>();
+		// On doit boucler sur toute les cases entre - la position jusqu'à + la position, en haut et en bas
+		for (int i = -nbCaseDensite; i <= nbCaseDensite; i++) {
+			for (int j = -nbCaseDensite; j <= nbCaseDensite; j++) {
+				if (i == 0 && j == 0) {
+					continue; // il faut enlever la case de la liste principale
+				}
+				Coordonnee coordonneeAdjacente = new Coordonnee(coordonnee.getLigne() + i, coordonnee.getColonne() + j);
+				Case caseAdjacente = grille.getCase(coordonneeAdjacente);
+				if (caseAdjacente != null ){
+					if (caseAdjacente.getObstacle().equals(GameConfiguration.PLAINE)){
+						coordonneeAdjacentes.add(coordonneeAdjacente);
+					}
+					else {
+						// il faut enlever la case de la liste principale (faudrait un check partout)
+					}
+				}
+            }
+		}
 		return null;
 	}
 
 	private void augmenterProbabilite(List<Coordonnee> casesAdjacentes, int densite) {
-		// TODO Auto-generated method stub
+		// Regles : il faut toujours avoir la somme des probas à 100
 		
 	}
 
