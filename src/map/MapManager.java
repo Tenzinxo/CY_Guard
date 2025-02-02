@@ -42,7 +42,7 @@ public class MapManager {
 		if (coordonnee == null) {
 			return;
 		}
-		for (Double probabilite : new ArrayList<>(getListeProbabilites())) {
+		for (Double probabilite : getListeProbabilites()) {
 	        List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
 	        if (coordonnees.remove(coordonnee) == true) {
 	            if (coordonnees.isEmpty()) {
@@ -152,7 +152,7 @@ public class MapManager {
                 supprimerCoordonnee(coordonnee);
                 List<Coordonnee> listeNouvelleProbabilite = getCoordonneesFromProbabilite(nouvelleProbabilite);
                 if (listeNouvelleProbabilite == null) { 
-                	listeNouvelleProbabilite = new ArrayList<>(); 
+                	listeNouvelleProbabilite = new ArrayList<>();
                 }
                 listeNouvelleProbabilite.add(coordonnee);
                 mapProbaCoordonnee.put(nouvelleProbabilite, listeNouvelleProbabilite);
