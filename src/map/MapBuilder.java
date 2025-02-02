@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapManager {
+public class MapBuilder {
 	private Grille grille;
 	private Map<Double, List<Coordonnee>> mapProbaCoordonnee = new HashMap<>();
 	
@@ -36,7 +36,6 @@ public class MapManager {
 	    }
 	    return null;
 	}
-
 	
 	public void supprimerCoordonnee(Coordonnee coordonnee) {
 		if (coordonnee == null) {
@@ -62,7 +61,7 @@ public class MapManager {
 	    return sommeProbabilite;
 	}
 	
-    public MapManager() {
+    public MapBuilder() {
         this.grille = new Grille(GameConfiguration.NB_LIGNE, GameConfiguration.NB_COLONNE);
         genererCarte();
     }
