@@ -20,8 +20,8 @@ public class GameConfiguration {
 	public static final int DIFFICULTE = 1;
 	public static final int NB_CASE_DENSITE = 5;
 	
-	public static final int NB_LIGNE = 25;
-	public static final int NB_COLONNE = 25;
+	public static final int NB_LIGNE = 10;
+	public static final int NB_COLONNE = 10;
 	
 	public static final int DENSITE_ROCHE = 20;
 	public static final int NB_ROCHE = (NB_LIGNE*NB_COLONNE)/(8*DIFFICULTE);

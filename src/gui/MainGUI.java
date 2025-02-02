@@ -11,18 +11,16 @@ import java.awt.event.KeyListener;
 
 import config.GameConfiguration;
 import map.Grille;
+import map.MapBuilder;
 
 public class MainGUI extends JFrame implements Runnable{
 	
 	private static Dimension preferredSize = new Dimension(GameConfiguration.WINDOW_WIDTH,GameConfiguration.WINDOW_HEIGHT);
 	
-	
 	private Grille grille;
 	
 	private GameDisplay dashboard;
 	
-	
-
 	public MainGUI(String title) throws HeadlessException {
 		super(title);
 		this.grille = new Grille(GameConfiguration.WINDOW_WIDTH,GameConfiguration.WINDOW_HEIGHT);
@@ -34,6 +32,8 @@ public class MainGUI extends JFrame implements Runnable{
 		contentPane.setLayout(new BorderLayout());
 		
 		dashboard = new GameDisplay(grille);
+		MapBuilder mapBuilder = new MapBuilder();
+		this.grille = mapBuilder.getGrille();
 		
 		dashboard.setPreferredSize(preferredSize);
 		contentPane.add(dashboard,BorderLayout.CENTER);

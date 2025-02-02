@@ -13,15 +13,15 @@ public class MapBuilder {
 	private Grille grille;
 	private Map<Double, List<Coordonnee>> mapProbaCoordonnee = new HashMap<>();
 	
-	public List<Double> getListeProbabilites() {
+	private List<Double> getListeProbabilites() {
         return new ArrayList<>(mapProbaCoordonnee.keySet());
     }
 	
-	public List<Coordonnee> getCoordonneesFromProbabilite(Double probabilite) {
+	private List<Coordonnee> getCoordonneesFromProbabilite(Double probabilite) {
         return mapProbaCoordonnee.get(probabilite);
     }
 	
-	public void ajouterProbabilite(Double probabilite, List<Coordonnee> coordonnees) {
+	private void ajouterProbabilite(Double probabilite, List<Coordonnee> coordonnees) {
         if (probabilite != null && coordonnees != null && !coordonnees.isEmpty()) {
             mapProbaCoordonnee.put(probabilite, coordonnees);
         }
@@ -37,7 +37,7 @@ public class MapBuilder {
 	    return null;
 	}
 	
-	public void supprimerCoordonnee(Coordonnee coordonnee) {
+	private void supprimerCoordonnee(Coordonnee coordonnee) {
 		if (coordonnee == null) {
 			return;
 		}
@@ -52,7 +52,7 @@ public class MapBuilder {
 	    }
 	}
 	
-	public double getSommeProbabilite() {
+	private double getSommeProbabilite() {
 	    double sommeProbabilite = 0.0;
 	    for (Double probabilite : getListeProbabilites()) {
 	        List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
@@ -66,7 +66,7 @@ public class MapBuilder {
         genererCarte();
     }
 	
-	public void genererCarte() {
+	private void genererCarte() {
 		placerObstacles(GameConfiguration.LAC, GameConfiguration.NB_LAC, GameConfiguration.DENSITE_LAC);
 		placerObstacles(GameConfiguration.ROCHE, GameConfiguration.NB_ROCHE, GameConfiguration.DENSITE_ROCHE);
 		placerObstacles(GameConfiguration.ARBRE, GameConfiguration.NB_ARBRE, GameConfiguration.DENSITE_ARBRE);
@@ -161,5 +161,9 @@ public class MapBuilder {
 
 	private static double getValeurAleatoire(double value) {
 	    return (double) Math.random() * value;
+	}
+	
+	public Grille getGrille() {
+		return this.grille;
 	}
 }
