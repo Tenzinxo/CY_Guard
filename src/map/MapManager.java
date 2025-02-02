@@ -27,6 +27,17 @@ public class MapManager {
         }
     }
 	
+	private Double getProbabiliteFromCoordonnee(Coordonnee coordonnee) {
+	    for (Double probabilite : getListeProbabilites()) {
+	        List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
+	        if (coordonnees.contains(coordonnee)) {
+	            return probabilite;
+	        }
+	    }
+	    return null;
+	}
+
+	
 	public void supprimerCoordonnee(Coordonnee coordonnee) {
 		if (coordonnee == null) {
 			return;
@@ -40,6 +51,15 @@ public class MapManager {
 	            break;
 	        }
 	    }
+	}
+	
+	public double getSommeProbabilite() {
+	    double sommeProbabilite = 0.0;
+	    for (Double probabilite : getListeProbabilites()) {
+	        List<Coordonnee> coordonnees = getCoordonneesFromProbabilite(probabilite);
+	        sommeProbabilite += probabilite * coordonnees.size();
+	    }
+	    return sommeProbabilite;
 	}
 	
     public MapManager() {
@@ -71,7 +91,7 @@ public class MapManager {
 		initProba();
 		int obstaclesPlaces = 0;
         while (obstaclesPlaces < nombreObstacles) {
-        	List<Coordonnee> listeCoordonneeAleatoire = getListeFromValeurAleatoire(getValeurAleatoire());
+        	List<Coordonnee> listeCoordonneeAleatoire = getListeFromValeurAleatoire(getValeurAleatoire(getSommeProbabilite()));
         	if (listeCoordonneeAleatoire != null && !listeCoordonneeAleatoire.isEmpty()) {
         		Coordonnee coordonneeAleatoire = getCoordonneeAleatoire(listeCoordonneeAleatoire);
         		if (coordonneeAleatoire != null) {
@@ -112,6 +132,7 @@ public class MapManager {
 		for (int i = -nbCaseDensite; i <= nbCaseDensite; i++) {
 			for (int j = -nbCaseDensite; j <= nbCaseDensite; j++) {
 				if (i == 0 && j == 0) { continue; }
+				
 				Coordonnee coordonneeAdjacente = new Coordonnee(coordonnee.getLigne() + i, coordonnee.getColonne() + j);
 				Case caseAdjacente = grille.getCase(coordonneeAdjacente);
 				if (caseAdjacente != null && caseAdjacente.getObstacle().equals(GameConfiguration.PLAINE)){
@@ -122,24 +143,24 @@ public class MapManager {
 		return coordonneeAdjacentes;
 	}
 
-    private void augmenterProbabilite(List<Coordonnee> coordonneeAdjacentes, int densite) {
-		// TODO Auto-generated method stub
-		
-	}
+    private void augmenterProbabilite(List<Coordonnee> coordonnees, int densite) {
+        for (Coordonnee coordonnee : coordonnees) {
+            Double probaActuelle = getProbabiliteFromCoordonnee(coordonnee);
+            if (probaActuelle != null) {
+                double nouvelleProbabilite = probaActuelle * (1 + densite / 100.0);
+                
+                supprimerCoordonnee(coordonnee);
+                List<Coordonnee> listeNouvelleProbabilite = getCoordonneesFromProbabilite(nouvelleProbabilite);
+                if (listeNouvelleProbabilite == null) { 
+                	listeNouvelleProbabilite = new ArrayList<>(); 
+                }
+                listeNouvelleProbabilite.add(coordonnee);
+                mapProbaCoordonnee.put(nouvelleProbabilite, listeNouvelleProbabilite);
+            }
+        }
+    }
 
-	private static double getValeurAleatoire() {
-	    return (double) Math.random() * 100;
+	private static double getValeurAleatoire(double value) {
+	    return (double) Math.random() * value;
 	}
-	
-	// On met une liste de coordonnee avec une proba (au début 100 pour l'ensemble de la liste)
-	
-	// On prend un nombre aléatoire entre 0 et 100 
-	// On prend la treeMap de proba et on va jusqu'a atteindre le chiffre 
-	// On choisi aléatoirement une coordonnées dans cette liste de proba
-	// On met l'obstacle demandé et on le retire de la liste 
-	// On récupère les cases adjacentes(nb_case) pour augmenter leurs proba (confus encore)
-	
-	// Refaire une itération
-	// Faire une boucle par type de tuile : Lac -> Roche -> Arbre
-	
 }
