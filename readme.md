@@ -25,21 +25,21 @@ capturer les intrus dynamiques, dans un environnement connu mais avec une visibi
 Téléchargez les fichiers sources depuis le dépôt GitHub :  
    [https://github.com/AirSoks/CY_Guard](https://github.com/AirSoks/CY_Guard)
 2. **Importation dans Eclipse**  
-	- Ouvrez Eclipse.
-	- Allez dans `File` > `Import` > `Existing Projects into Workspace`.
-	- Sélectionnez le dossier du projet que vous venez de télécharger.
-	- Cliquez sur `Finish` pour importer le projet.
+- Ouvrez Eclipse.
+- Allez dans `File` > `Import` > `Existing Projects into Workspace`.
+- Sélectionnez le dossier du projet que vous venez de télécharger.
+- Cliquez sur `Finish` pour importer le projet.
 3. **Exécution de la simulation**  
-	- Localisez la classe `TestGame.java` dans le projet.
-	- Faites un clic droit dessus puis choisissez `Run As` > `Java Application`.
-	- L'interface graphique (GUI) s'ouvrira automatiquement.
+- Localisez la classe `TestGame.java` dans le projet.
+- Faites un clic droit dessus puis choisissez `Run As` > `Java Application`.
+- L'interface graphique (GUI) s'ouvrira automatiquement.
 4. **Fonctionnalités disponibles via la barre de menu**  
-	- **Start** : Démarrer la simulation.
-	- **Pause** : Mettre en pause la simulation.
-	- **Restart** : Réorganiser les gardiens et intrus aléatoirement sur la carte.
-	- **Rebuild** : Générer une nouvelle carte avec des obstacles placée différemment.
-	- **Options** : Modifier les paramètres de la simulation (taille de la grille, nombre de gardiens, nombre d'intrus, etc.).
-	- **Affichage** : Personnaliser l'affichage visuel (zones de vision, chemins calculés, etc.).
+- **Start** : Démarrer la simulation.
+- **Pause** : Mettre en pause la simulation.
+- **Restart** : Réorganiser les gardiens et intrus aléatoirement sur la carte.
+- **Rebuild** : Générer une nouvelle carte avec des obstacles placée différemment.
+- **Options** : Modifier les paramètres de la simulation (taille de la grille, nombre de gardiens, nombre d'intrus, etc.).
+- **Affichage** : Personnaliser l'affichage visuel (zones de vision, chemins calculés, etc.).
 
 ## Documentation
 - Le rapport du projet est disponible en plusieurs formats :
