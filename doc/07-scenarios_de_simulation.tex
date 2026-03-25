@@ -1,0 +1,67 @@
+\section{Scénarios de simulation}
+
+Afin de valider notre moteur de simulation et d’illustrer le comportement des agents dans différents contextes, plusieurs scénarios concrets ont été définis. Chacun permet de tester une capacité spécifique du système, notamment la patrouille, la poursuite, la gestion d’obstacles, l’interaction utilisateur, et la coordination entre agents.
+
+\subsection{Scénario 1 : Patrouille d’un gardien}
+Un gardien est placé seul dans un environnement dégagé. Il utilise une stratégie de patrouille aléatoire. Ce scénario permet de vérifier :
+\begin{itemize}
+    \item l’activation de la stratégie \texttt{DeplacementAleatoire} ;
+    \item la gestion correcte des déplacements et des bords de grille ;
+    \item l’affichage dynamique de l’agent en mouvement.
+\end{itemize}
+
+\subsection{Scénario 2 : Détection d’un intrus et poursuite}
+Un intrus est introduit dans le champ de vision d’un gardien. Dès que l’intrus est perçu, le gardien passe à la stratégie \texttt{DeplacementStrategique} pour le poursuivre.
+\begin{itemize}
+    \item La zone de vision du gardien est correctement calculée ;
+    \item La stratégie est mise à jour dynamiquement ;
+    \item L’intrus est capturé s’il est rattrapé.
+\end{itemize}
+
+\subsection{Scénario 3 : Contrôle manuel d’un agent}
+Dans ce scénario, un agent (souvent un gardien) est contrôlé manuellement par l’utilisateur via le clavier (flèches directionnelles). Ce test permet de valider :
+\begin{itemize}
+    \item l’implémentation de la stratégie \texttt{DeplacementManuel} ;
+    \item l’écoute des événements clavier sous Swing ;
+    \item la fluidité des interactions homme-machine.
+\end{itemize}
+
+\subsection{Scénario 4 : Environnement avec obstacles}
+Plusieurs agents sont placés dans une grille contenant des murs et zones bloquées. Les objectifs sont :
+\begin{itemize}
+    \item tester la gestion des déplacements avec obstacles ;
+    \item vérifier que les agents contournent correctement les zones non accessibles ;
+    \item observer l’effet des murs sur la visibilité.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+   
+    \caption{Simulation avec obstacles : évitement et visibilité partielle}
+\end{figure}
+
+\subsection{Scénario 5 : Communication entre gardiens}
+Ce scénario introduit la \textbf{coopération entre gardiens} : lorsqu’un intrus est détecté par un agent, une alerte est diffusée à ses collègues, qui se dirigent vers la zone de détection même s’ils n’ont pas encore de ligne de vue directe.
+
+\paragraph{Fonctionnement :}
+\begin{enumerate}
+    \item Un gardien $G_1$ détecte un intrus $I$ dans son champ de vision ;
+    \item $G_1$ transmet une alerte  au \texttt{PersonneManager} ;
+    \item Tous les autres gardiens reçoivent cette alerte et adoptent temporairement une stratégie \texttt{l'intrus} ;
+    \item L’ensemble converge vers l’intrus, ce qui augmente les chances de capture.
+\end{enumerate}
+
+\paragraph{Objectifs de ce scénario :}
+\begin{itemize}
+    \item Évaluer la capacité du système à simuler une communication inter-agents ;
+    \item Tester la dynamique d’adaptation stratégique à plusieurs niveaux ;
+    \item Simuler un comportement collectif coordonné
+\end{itemize}
+
+\paragraph{Perspectives :}
+Ce mécanisme ouvre la voie à des stratégies plus avancées :
+\begin{itemize}
+    \item diffusion d’informations entre agents ;
+    \item hiérarchie de commandement (ex: chef de patrouille) ;
+    \item couverture coopérative de zones critiques.
+\end{itemize}

@@ -1,0 +1,78 @@
+
+
+\section{Organisation et répartition du travail}
+
+\subsection{Une dynamique collaborative équitable et enrichissante}
+Dès le début du projet, nous avons choisi de répartir les tâches de façon claire, équitable et formatrice. Plutôt que de séparer les rôles, nous avons décidé de travailler en trinôme sur toutes les parties du projet, en tournant régulièrement. Cela nous a permis de mieux comprendre l’ensemble du projet et de développer nos compétences en conception orientée objet, en simulation algorithmique et en création d’interfaces graphiques.
+
+Nous avons organisé notre travail autour d’une architecture MVC (donneé – Moteur– IHM), en partageant le projet en trois grandes parties :
+
+\begin{itemize}
+    \item \textbf{Le Modèle (les données) } : définition et gestion des entités fondamentales (agents, grille, environnement) ;
+    \item \textbf{Le Moteur de Simulation} : logique comportementale, stratégies, gestion des cycles ;
+    \item \textbf{La Vue (IHM)} : interface graphique Swing, interactions, rendu dynamique.
+\end{itemize}
+Chaque membre a pris en charge un des trois axes, tout en travaillant aussi sur les deux autres lors des phases de relecture, de tests et d’intégration. Cette méthode nous a permis de bien comprendre tout le système et d’être plus flexibles pendant le développement.
+
+
+
+\subsection{Répartition fonctionnelle détaillée}
+
+\subsubsection*{1. Couche Modèle – Conception des entités et de l’environnement}
+Le premier axe de travail a porté sur la mise en place des éléments de base du système : Grille, Case, Coordonnee, Personne, Gardien et Intrus. Nous avons accordé une attention particulière à l’encapsulation des données, à un héritage maîtrisé pour les agents, ainsi qu’à la gestion du champ de vision et aux interactions avec les obstacles.
+Les structures ont été conçues pour être modulaires, solides et facilement extensibles, avec une série de tests unitaires assurant leur bon fonctionnement. Cette couche forme la base sur laquelle repose toute la logique du système.
+
+\subsubsection*{2. Couche Moteur – Simulation et comportements stratégique}
+
+Le second volet a concerné la mise en œuvre du moteur de simulation : gestion des cycles, stratégies de déplacement (\texttt{DeplacementAleatoire}, \texttt{DeplacementStrategique}), détection et poursuite des intrus, coordination entre gardiens.
+Nous avons structuré les comportements dynamiques grâce au design pattern Strategy, et piloté tous les agents via un seul thread. Cette architecture, sans besoin de synchronisation, garantit une réactivité optimale et une cohérence comportementale. Ce module incarne le cœur décisionnel du système.
+\subsubsection*{3. Couche Vue – Interface Swing fluide et réactive}
+
+La troisième couche s’est concentrée sur l’expérience utilisateur : création d’une interface claire, réactive et capable d’afficher en temps réel les agents sur la grille. Elle gère également les événements clavier et souris, l'affichage des zones de vision et la personnalisation visuelle (couleurs, icônes).
+
+La classe \texttt{PaintStrategie} a été conçue pour offrir un \textbf{affichage modulaire et extensible}, avec la possibilité d’ajouter facilement de nouvelles couches (graphes, logs, replays). Une attention particulière a été portée à la \textbf{fluidité graphique} et à l’\textbf{ergonomie} de l’interface.
+
+\subsection{Planification sur 12 semaines – Une progression maîtrisée}
+
+\textbf{Phase 1 – Semaine 1 à 4 :} Analyse du sujet, modélisation UML, structuration du dépôt Git, création des entités principales, et premier affichage graphique.
+
+\textbf{Phase 2 – Semaine 5 à 8 :} Implémentation des stratégies de déplacement, développement du moteur de simulation, intégration de la couche graphique, tests fonctionnels, validation des interactions.
+
+\textbf{Phase 3 – Semaine 9 à 12 :} Ajout de scénarios complexes, enrichissement de l’interface, finalisation du système, rédaction du rapport, génération de graphiques avec \texttt{JFreeChart}, et préparation à la soutenance.
+
+\subsection{Outils et méthodes de collaboration}
+
+Pour maintenir une dynamique fluide et efficace, nous avons mis en place une organisation agile, adaptée au contexte universitaire :
+
+\begin{itemize}
+    
+    \item \textbf{Dépôt GitHub} pour la gestion collaborative du code et la traçabilité des versions ;
+     
+    
+    \item \textbf{Documentation continue} au fil du développement (JavaDoc, UML, commentaires).
+\end{itemize}
+
+\subsection{Conclusion sur l’organisation de l’équipe}
+
+Cette approche, fondée sur l’équité, la complémentarité et l’entraide, a permis à chaque membre de s’investir pleinement dans le projet tout en développant une vision d’ensemble. Elle nous a donné les moyens de construire une application complète, modulaire, esthétique et fonctionnelle dans des délais réalistes.
+
+Ce travail d’équipe rigoureux, à la fois professionnel et académique, reflète notre volonté  et notre engagement à maîtriser toutes les dimensions du génie logiciel. Il constitue une base solide pour nos futures expériences collaboratives, qu’elles soient universitaires ou professionnelles.
+\subsection{Défis rencontrés et solutions apportées}
+
+Le développement de ce projet a été jalonné de défis techniques et organisationnels que nous avons su relever collectivement. Voici les principaux obstacles rencontrés, accompagnés des solutions mises en œuvre :
+
+\begin{itemize}
+    
+    
+    \item \textbf{Gestion de la concurrence} : Le comportement multi-agent devait être réaliste sans provoquer d’accès concurrents conflictuels. Pour cela, nous avons mis en place des verrous localisés et évité les interblocages grâce à une conception rigoureuse des interactions.
+    
+    \item \textbf{Comportements stratégiques des agents} : Modéliser une intelligence crédible a exigé une abstraction claire des stratégies. L’adoption du \texttt{pattern Strategy} et la séparation stricte entre les règles métier et la logique de déplacement ont été déterminantes pour faciliter les tests et les extensions.
+    
+    \item \textbf{Lisibilité et maintenabilité du code} : Travailler à plusieurs sur une base commune a posé la question de la cohérence du code. Nous avons donc adopté un style de codage uniforme, et documenté chaque module avec \texttt{JavaDoc} pour garantir la maintenabilité à long terme.
+    
+    \item \textbf{Maîtrise de Java Swing} : L’implémentation de l’interface graphique a été un véritable défi, notamment pour gérer le rendu dynamique, les événements utilisateur et les rafraîchissements sans scintillement. Une compréhension approfondie du cycle de vie graphique de Swing a permis de stabiliser l’interface et d’en améliorer la fluidité.
+    
+    \item \textbf{Coordination d'équipe} : Travailler sur un projet aussi modulaire à trois a nécessité un effort constant de communication et d’alignement. Les réunions hebdomadaires, les outils de gestion de version (Github) ont été essentiels pour éviter les divergences.
+\end{itemize}
+
+Ces défis nous ont permis de développer des compétences concrètes en résolution de problèmes, gestion d'équipe, et en conception logicielle avancée. Chaque obstacle a été l’occasion d’apprendre, de s’adapter, et de renforcer la robustesse de notre système.

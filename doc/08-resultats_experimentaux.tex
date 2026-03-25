@@ -1,0 +1,102 @@
+
+
+\section{Résultats expérimentaux et analyse}
+
+Cette section présente une analyse qualitative et expérimentale des résultats obtenus à partir de différentes configurations de jeu. L’objectif est d’évaluer l’efficacité du moteur, la réactivité des agents, la pertinence des stratégies et la robustesse globale du système, en fonction de la complexité croissante des scénarios simulés.
+
+\subsection{Méthodologie expérimentale}
+
+Pour chaque configuration testée, plusieurs paramètres ont été modifiés :
+\begin{itemize}
+    \item le \textbf{nombre de gardiens} : entre 1 et 5 ;
+    \item le \textbf{nombre d’intrus} : entre 1 et 3 ;
+    \item la \textbf{densité d’obstacles} : faible, moyenne, élevée ;
+    \item le \textbf{niveau de difficulté} du jeu : défini par la taille de la grille, le rayon de vision, et le comportement des intrus ;
+    \item le \textbf{type de stratégie utilisée} : aléatoire, stratégique, coopérative.
+\end{itemize}
+
+Chaque simulation a été relancée plusieurs fois pour observer la stabilité des comportements, la cohérence des réactions, et la qualité de l'affichage.
+
+\subsection{Niveaux de difficulté}
+
+Trois niveaux de difficulté ont été définis pour évaluer la montée en complexité :
+
+\paragraph{Facile :}
+\begin{itemize}
+    \item 1 gardien, 1 intrus ;
+    \item Grille 10x10, obstacles rares ;
+    \item Champ de vision large, déplacement simple.
+\end{itemize}
+Ce niveau permet de tester la capture basique et la détection immédiate.
+
+\paragraph{Intermédiaire :}
+\begin{itemize}
+    \item 2 à 3 gardiens, 1 à 2 intrus ;
+    \item Grille 15x15 avec zones bloquées ;
+    \item Intrus fuyants avec changement de direction si repérés.
+\end{itemize}
+Cela permet de tester l’efficacité de la stratégie \texttt{DeplacementStrategique} et la gestion d’un environnement partiellement obstrué.
+
+\paragraph{Difficile :}
+\begin{itemize}
+    \item 4 à 5 gardiens, 2 à 3 intrus simultanés ;
+    \item Grille 20x20 fortement remplie d’obstacles ;
+    \item Vision réduite, comportements adaptatifs, et nécessité de coopération.
+\end{itemize}
+Ce niveau permet d’évaluer la communication inter-agents et les limites du moteur de simulation en cas de surcharge de calcul.
+
+\subsection{Analyse qualitative des résultats}
+
+\paragraph{Efficacité des stratégies}
+
+Les résultats montrent que les stratégies gloutonnes simples suffisent dans les cas faciles, mais deviennent inefficaces dans les environnements complexes. L’utilisation de la communication permet d’augmenter drastiquement le taux de capture et de réduire le temps moyen de simulation. L’adaptabilité est une clé de réussite dans les niveaux difficiles.
+
+\paragraph{Robustesse du moteur}
+
+Le moteur tour par tour a montré une bonne stabilité dans toutes les configurations, y compris avec plusieurs agents agissant en parallèle. La gestion des conflits de positionnement est correctement assurée, et les collisions sont évitées grâce à la synchronisation centrale du \texttt{PersonneManager}.
+
+\paragraph{Réalisme et immersion}
+
+L’ajout de couches visuelles comme la zone de vision, les halos, et les chemins stratégiques permet une excellente lecture du comportement des agents. Le système est suffisamment immersif pour être utilisé en démonstration ou pour la recherche pédagogique sur les comportements multi-agents.
+
+\subsection{Synthèse critique}
+
+Le système atteint les objectifs suivants :
+\begin{itemize}
+    \item Réactivité en temps réel avec rendu fluide et structuré ;
+    \item Adaptation dynamique des stratégies ;
+    \item Simulation crédible même en environnement difficile ;
+    \item Capacité d’extension vers l’intelligence collective.
+\end{itemize}
+
+Ces éléments valident les choix d’architecture, de programmation orientée objet et de découplage fonctionnel. Des perspectives d’optimisation ( pathfinding, apprentissage) sont encore possibles.
+
+
+Nous avons également abordé des notions plus avancées, telles que les patrons de conception, la perception en environnement partiellement observable, ou la coordination multi-agents dans des contextes simulés.
+
+\subsection{Méthodologie de travail et esprit d’équipe}
+
+Au-delà des aspects techniques, ce projet nous a confrontés à une méthodologie complète de gestion de projet logiciel. Nous avons appris à :
+
+\begin{itemize}
+    \item planifier les étapes du développement (modèle, moteur, interface) ;
+    \item répartir les responsabilités entre membres de manière efficace ;
+    \item documenter notre travail au fur et à mesure pour assurer sa traçabilité ;
+    \item présenter notre projet de manière structurée et professionnelle ;
+    \item corriger les bugs et faire évoluer notre application en continu.
+\end{itemize}
+
+La collaboration a été un élément central : chaque membre a su s’investir dans la réussite du groupe, en apportant ses idées, en corrigeant celles des autres, et en partageant ses découvertes techniques.
+
+\subsection{Extensions pédagogiques}
+
+\begin{itemize}
+    \item \textbf{Mode compétition :} proposer deux équipes (gardiens contre intrus) avec des scores, des chronomètres ou des points de capture pour initier des tournois ou des défis étudiants.
+
+    \item \textbf{Exploration de comportements émergents :} observer et analyser des stratégies non programmées, comme la formation de barrages ou la fuite coordonnée, dans un objectif d’analyse comportementale.
+    
+   
+\end{itemize}
+
+\noindent En somme, le projet actuel constitue une base solide et modulaire qui peut évoluer vers des versions plus complexes, pédagogiques ou réalistes. Ces pistes démontrent que le simulateur peut devenir un véritable terrain d’expérimentation pour l’intelligence collective, la modélisation multi-agents et la simulation interactive.
+

@@ -1,0 +1,189 @@
+\section{Choix technologiques}
+
+Avant de présenter les outils et langages utilisés, il est important de revenir sur notre démarche globale de travail. En tant qu’étudiants en informatique, nous avons été formés à organiser notre projet de manière claire et rigoureuse, à produire un rapport structuré et à présenter nos résultats de façon professionnelle. Cela implique plusieurs dimensions complémentaires : la maîtrise des outils techniques, la capacité à modéliser un système, et la faculté à communiquer notre démarche.
+
+\textbf{Réaliser une présentation efficace} demande de structurer son discours, de mettre en valeur les décisions prises et de justifier les choix techniques. C’est ce que nous avons appris à travers les présentations orales de TP, où chaque groupe devait expliquer son raisonnement, l’architecture du projet, et les problèmes rencontrés. Ces compétences sont directement transposées dans ce rapport écrit.
+
+Pour \textbf{modéliser notre système}, nous avons utilisé des outils comme \textbf{Draw.io} ou \textbf{Lucidchart} afin de créer des \textit{diagrammes UML} (diagrammes de classes, cas d’utilisation, etc.). Ces schémas nous ont permis de réfléchir à l’architecture du projet avant même l’écriture du code, et de mieux comprendre les relations entre les classes.
+
+Concernant la rédaction, nous avons choisi le langage \LaTeX{} (via Overleaf) pour sa puissance dans la structuration de documents scientifiques. \textbf{LaTeX} nous a permis de produire un rapport professionnel, avec une gestion automatique des titres, références, tableaux, figures, listings de code et bibliographie.
+
+Enfin, nous avons compris que le langage Java, au-delà de ses qualités pédagogiques, offre des avantages réels pour concevoir une application structurée. Il nous a permis d’expérimenter avec des \textbf{design patterns} (comme le \texttt{Factory} ou \texttt{Observer}), de manipuler des \textbf{threads} pour simuler des comportements parallèles, et de créer une architecture robuste en séparant les responsabilités entre les composants.
+
+C’est dans ce cadre que s’inscrivent les choix technologiques que nous allons maintenant détailler : certains ont été imposés par les consignes pédagogiques, d’autres ont été adoptés au fil de notre réflexion et de notre autonomie grandissante.
+
+\subsection{Langage de programmation : Java}
+
+Le langage \textbf{Java} s’est imposé comme langage de développement principal, non pas à la suite d’un choix autonome de notre part, mais dans le cadre des consignes pédagogiques fixées par l’enseignant responsable du module. Ce choix imposé vise à garantir une uniformité des projets réalisés par les différents groupes, et à mettre en pratique les compétences spécifiques enseignées en cours de programmation orientée objet.
+
+Même s’il ne s’agissait pas d’une décision que nous avons prise nous-mêmes, ce cadre imposé a été bénéfique d’un point de vue pédagogique. Il nous a permis de consolider notre maîtrise de Java, d’approfondir les concepts d'encapsulation, d’héritage et de polymorphisme, et d’utiliser pleinement les ressources standard du langage, telles que :
+\begin{itemize}
+    \item les classes et interfaces,
+    \item les collections (ArrayList, HashMap, etc.),
+    \item la gestion des événements (listeners),
+    \item la bibliothèque graphique Swing.
+\end{itemize}
+Au-delà des fonctionnalités fondamentales de Java, nous avons appliqué plusieurs \textbf{principes de génie logiciel} essentiels pour concevoir une application claire, évolutive et modulaire. Ces principes, abordés dans le cadre du cours de conception orientée objet et de génie logiciel, nous ont permis de structurer le projet selon des standards professionnels.
+
+En premier lieu, nous avons mis en œuvre des \textbf{patrons de conception} (\textit{design patterns}) reconnus, adaptés à notre architecture logicielle. Le patron \texttt{Factory}, par exemple, a été utilisé pour créer dynamiquement des agents (gardiens, intrus) selon leurs types, sans que les classes appelantes ne soient couplées à leurs constructeurs. Cette approche respecte le \textit{principe de responsabilité unique} (SRP) et rend notre code plus souple face aux évolutions.
+
+\subsection{Environnement de développement : Eclipse et IntelliJ IDEA}
+
+Sur recommandation pédagogique, nous avons utilisé l’environnement de développement intégré \textbf{Eclipse}, largement adopté dans le cadre universitaire pour les projets Java. Ce choix nous a été présenté comme une base standard afin de bien comprendre la structuration d’un projet Java, sa compilation et son exécution.
+
+Parmi les fonctionnalités d’Eclipse que nous avons exploitées :
+\begin{itemize}
+    \item l’intégration directe de github, facilitant le lien avec GitHub ;
+    \item les outils de débogage (points d’arrêt, observation de variables, exécution pas-à-pas) ;
+    \item l’organisation claire en projets et packages Java ;
+    \item l’auto-complétion et les raccourcis de refactorisation.
+\end{itemize}
+
+Toutefois, dans une volonté d’explorer d’autres outils professionnels et de comparer les environnements, nous avons également utilisé \textbf{IntelliJ IDEA}, un IDE moderne largement répandu dans l’industrie.
+
+Ce choix personnel nous a permis :
+\begin{itemize}
+    \item de bénéficier d’une interface plus ergonomique et intuitive ;
+    \item d’utiliser des outils de refactorisation très puissants ;
+    \item de naviguer rapidement entre classes, méthodes et fichiers ;
+    \item de visualiser graphiquement les structures de projet et les dépendances.
+\end{itemize}
+
+Ainsi, bien que l'encadrement ait recommandé Eclipse pour garantir un accompagnement homogène, l’utilisation complémentaire d’IntelliJ IDEA a enrichi notre expérience de développement et renforcé notre autonomie dans la gestion de projets Java complexes.
+
+\subsection{Interface graphique : Java Swing}
+
+Pour la visualisation de notre grille, nous avons utilisé la bibliothèque graphique \textbf{Java Swing}, également recommandée dans le cadre du cours. Swing permet de construire une interface graphique fonctionnelle et réactive en Java pur, sans dépendance externe.
+
+Nous avons utilisé Swing pour :
+\begin{itemize}
+    \item représenter la grille sous forme de cases colorées ;
+    \item afficher clairement les gardiens, les intrus et les obstacles ;
+    \item rafraîchir dynamiquement l’interface à chaque déplacement ou événement.
+\end{itemize}
+
+Ce choix s’inscrit pleinement dans les objectifs pédagogiques : il nous a permis de pratiquer la programmation événementielle, de structurer la logique d’interface indépendamment du moteur de simulation, et de créer une application interactive, tout en restant dans l’écosystème Java.
+
+\subsection{Outils complémentaires}
+
+\begin{itemize}
+    \item \textbf{Overleaf} : bien que la rédaction du rapport en \LaTeX{} ait été imposée dans le cadre pédagogique, le choix d’utiliser la plateforme en ligne \textbf{Overleaf} s’est révélé particulièrement judicieux pour optimiser notre travail collaboratif. En effet, Overleaf est un éditeur \LaTeX{} moderne, conçu spécifiquement pour la co-rédaction scientifique et technique.
+
+    Il nous a permis de :
+    \begin{itemize}
+        \item rédiger à plusieurs en simultané, avec un suivi en temps réel des modifications ;
+        \item bénéficier d’une compilation automatique et d’un affichage instantané du rendu PDF ;
+        \item gérer efficacement les versions du document, en revenant facilement à un état antérieur ;
+        \item insérer et structurer facilement des figures, tableaux, légendes, bibliographies et schémas UML.
+    \end{itemize}
+
+    Grâce à Overleaf, nous avons pu maintenir une structure claire, un style homogène et une mise en forme conforme aux standards universitaires, tout en gagnant un temps considérable sur les aspects techniques de la rédaction.
+
+    \item \textbf{JFreeChart} : conformément aux consignes pédagogiques, nous avons intégré à notre projet la bibliothèque \textbf{JFreeChart}, qui s’est révélée être un composant essentiel pour la visualisation des données issues de la simulation.
+
+    JFreeChart est une bibliothèque Java open source puissante, conçue pour produire facilement des graphiques professionnels (courbes, histogrammes, diagrammes circulaires, séries temporelles, etc.). Son intégration naturelle avec les interfaces Swing a facilité son adoption dans notre application.
+
+    \textbf{L'utilisation de JFreeChart a apporté une réelle plus-value au projet :}
+    \begin{itemize}
+         \item elle a facilité l’interprétation des comportements des agents via des représentations graphiques ;
+        \item elle a permis de suivre en temps réel l’évolution de la simulation par des courbes dynamiques ;
+       
+        \item elle a permis de comparer objectivement les performances des différentes stratégies implémentées ;
+        \item elle a servi de support visuel puissant lors de la soutenance, en rendant les résultats immédiatement compréhensibles ;
+        
+    \end{itemize}
+
+
+    L’intégration de JFreeChart a ainsi transformé notre simulateur en un outil d’analyse complet, capable de produire non seulement une simulation visuelle, mais aussi des données mesurables, interprétables et exploitables. Ce niveau de retour visuel et statistique nous a permis d’aller au-delà de la simple implémentation fonctionnelle, en apportant une véritable dimension analytique et scientifique à notre projet.
+\end{itemize}
+
+\subsection{Gestion de version : GitHub}
+
+Dans une logique de travail collaboratif et de structuration rigoureuse du développement, nous avons utilisé la plateforme en ligne \textbf{GitHub} comme outil principal de gestion de version tout au long du projet. Ce choix, en accord avec les recommandations de notre professeur, nous a permis de centraliser l’ensemble du code source, de documenter l’évolution du projet, et d’organiser efficacement notre travail en équipe.
+
+Grâce à son intégration directe avec notre environnement de développement (notamment Eclipse, recommandé par l’enseignant), GitHub a facilité une communication fluide entre les membres du groupe. Il nous a permis de travailler de manière synchrone ou asynchrone, en toute sécurité, et dans un cadre structuré.
+
+Voici les bénéfices concrets que nous avons tirés de l’utilisation de GitHub :
+
+\begin{itemize}
+    \item \textbf{Suivi de l’évolution du projet} : chaque modification du code a été enregistrée et datée, nous permettant de retracer précisément l’historique du développement ;
+    
+    \item \textbf{Communication claire et efficace} : les messages de commits, les commentaires sur les pull requests et les issues nous ont permis de partager nos décisions, de discuter des problèmes techniques, et de maintenir un dialogue constant ;
+
+    \item \textbf{Travail parallèle sans conflit} : chacun a pu développer sur sa propre branche, puis proposer une fusion dans la branche principale après relecture, garantissant ainsi la stabilité du code tout en encourageant l’autonomie ;
+
+    \item \textbf{Stabilité et récupération} : en cas d’erreur ou de régression, il a toujours été possible de revenir à une version stable antérieure. GitHub s’est ainsi révélé être une véritable “bouée de secours” pour sécuriser notre progression ;
+
+    \item \textbf{Documentation centralisée} : au-delà du code, GitHub a également servi de plateforme documentaire. 
+\end{itemize}
+
+L’usage intensif et structuré de GitHub nous a offert un cadre de travail professionnel. Il nous a permis d’intégrer progressivement des méthodes issues du développement agile (revue de code, itérations, planification des tâches) et de prendre conscience de l’importance de la traçabilité, de la responsabilité collective et de la documentation continue dans tout projet de développement logiciel.
+
+\subsection{Structuration du projet}
+
+Pour garantir la clarté, la maintenabilité et l’évolutivité de notre application, nous avons structuré notre projet selon un modèle logique, modulaire et éprouvé : l’architecture \textbf{MVC}, pour \textit{Modèle-Vue-Contrôleur}. Ce choix, largement recommandé dans les enseignements de génie logiciel, nous a permis d’organiser le développement en trois parties distinctes et complémentaires, en respectant une séparation claire des responsabilités.
+
+\begin{itemize}
+    \item \textbf{Le Modèle} correspond à l’ensemble des données manipulées dans la simulation. Il regroupe les entités de base (agents, grille, obstacles) et définit leur état à un instant donné. Cette couche ne s’occupe pas de l’affichage ni de la logique de contrôle, ce qui en facilite la réutilisation.
+
+    \item \textbf{Le Contrôleur} (ou moteur de simulation) contient la logique du système : il décide des actions à effectuer, met à jour l’état du modèle, et déclenche les réactions nécessaires. C’est cette partie qui gère les règles de déplacement, les détections d’intrus, les interactions entre agents, etc.
+
+    \item \textbf{La Vue} est chargée d’afficher graphiquement le contenu du modèle. Elle ne contient aucune logique métier, mais se limite à représenter les éléments à l’écran à l’aide de la bibliothèque graphique Swing. Elle interagit avec le contrôleur pour capter les actions de l’utilisateur (clics, boutons, etc.).
+\end{itemize}
+
+Cette structuration nous a permis de construire une application bien organisée, facile à maintenir et à faire évoluer. Chaque composant peut être modifié indépendamment, tant que son interface avec les autres couches reste cohérente. Par exemple, nous pouvons changer l’apparence graphique sans toucher au moteur, ou modifier les règles de simulation sans altérer le fonctionnement de l’IHM.
+
+L’architecture MVC est largement enseignée dans les cours de génie logiciel, car elle favorise la modularité, la réutilisabilité et la compréhension du code. Elle constitue également une excellente base pour structurer des systèmes plus complexes dans un cadre professionnel, en facilitant le travail en équipe et la division des responsabilités.
+
+Enfin, cette structure nous a permis de travailler de manière progressive et organisée : nous avons pu d’abord développer et tester le modèle, puis implémenter la logique du contrôleur, et enfin concevoir l’interface graphique. Cela a contribué à une gestion de projet efficace et à une montée en complexité maîtrisée.
+
+
+Cette séparation des responsabilités est essentielle pour la lisibilité, la maintenabilité, et l’évolution du projet. Elle nous permet aussi d’implémenter de nouvelles fonctionnalités sans remettre en cause l’ensemble du système.
+\subsection{Évolution des outils utilisés}
+
+Dans un premier temps, nous avons suivi scrupuleusement les recommandations pédagogiques formulées par notre enseignant : utiliser le langage \textbf{Java}, l’IDE \textbf{Eclipse}, la bibliothèque graphique \textbf{Swing} et la plateforme de versionnement \textbf{GitHub}. Cette base imposée avait pour but de garantir un accompagnement homogène pour tous les groupes et de nous initier à un socle de technologies fondamentales du génie logiciel.
+
+Cependant, au fil de l’avancement du projet, nous avons été confrontés à des besoins plus spécifiques, liés à la modélisation, à la documentation, à la collaboration à distance ou encore à l’analyse de données issues de la simulation. Pour y répondre de manière autonome, nous avons progressivement intégré d’autres outils complémentaires à notre environnement de travail.
+
+\begin{itemize}
+    \item \textbf{Visual Studio Code} : utilisé principalement pour sa rapidité de lancement et sa souplesse sur certaines machines personnelles. Il nous a servi d’éditeur alternatif, notamment pour effectuer des modifications rapides, éditer des fichiers de configuration, ou lire du code sans charger un projet complet Eclipse. Son écosystème de plugins, léger mais puissant, nous a aussi permis de bénéficier d’une coloration syntaxique fluide, d’un terminal intégré, et d’une navigation rapide entre fichiers.
+
+    \item \textbf{Draw.io} et \textbf{Lucidchart} : ces deux plateformes de modélisation en ligne ont été utilisées pour créer des diagrammes UML (diagrammes de classes, cas d’utilisation, séquences) facilement partageables et modifiables en groupe. Leur interface intuitive et collaborative nous a permis de représenter clairement notre architecture logicielle, de visualiser les relations entre les composants du projet, et de mieux préparer nos présentations orales et écrites.
+
+\begin{itemize}
+    \item des \textbf{histogrammes} représentant le nombre d’intrusions détectées par heure ou par agent,
+    \item des \textbf{courbes d’évolution} montrant la fréquence des déplacements ou des alertes dans la grille,
+    \item des \textbf{graphes comparatifs} illustrant l’efficacité des gardiens selon leur position ou stratégie de patrouille.
+\end{itemize}
+
+L’intégration dans notre interface Swing a été facilitée par les classes fournies par JFreeChart (\texttt{ChartPanel}, \texttt{XYSeriesCollection}, etc.), qui permettent une personnalisation fine (titres, axes, couleurs, légendes), tout en garantissant une compatibilité totale avec notre logique orientée objet.
+
+En plus de son aspect visuel, JFreeChart nous a permis d’aborder un autre aspect du génie logiciel : la \textbf{valorisation des données simulées}. En effet, la représentation graphique ne servait pas seulement à illustrer les résultats, mais à en extraire des tendances, à comparer les performances des agents, ou à repérer des comportements inattendus dans le système.
+
+Enfin, cette approche renforce la cohérence de notre projet, en montrant qu’il est possible de construire un outil complet, modulaire et visuellement informatif sans quitter l’univers Java, ce qui constitue une compétence particulièrement recherchée dans le développement d’applications desktop professionnelles.
+
+
+\end{itemize}
+
+L’ajout progressif de ces outils n’a pas été improvisé, mais réfléchi selon une logique d’optimisation, d’efficacité et de professionnalisation. Il illustre notre capacité à sortir du cadre initial tout en restant rigoureux, et à adopter les bons outils pour les bonnes tâches. Cette démarche est en adéquation avec les pratiques attendues en entreprise, où les solutions techniques doivent être choisies avec discernement en fonction des contraintes et des objectifs du projet.
+
+
+\subsection{Conclusion}
+
+Les choix technologiques que nous avons détaillés dans cette section résultent d’une démarche hybride, à la croisée des recommandations pédagogiques fournies par notre professeur et de notre propre prise d’initiative. Ils ne reflètent pas seulement une accumulation d’outils, mais une véritable stratégie de conception cohérente et raisonnée.
+
+En suivant les consignes initiales du projet (utilisation de Java, Eclipse, Swing et GitHub), nous avons pu nous appuyer sur un cadre solide et structurant. Ce socle commun nous a permis de travailler dans un environnement maîtrisé, en lien direct avec les enseignements théoriques dispensés lors des cours et travaux pratiques. Cela a renforcé notre compréhension des bases du développement orienté objet, de l’architecture logicielle, et de la gestion de projets collaboratifs.
+
+Par la suite, notre ouverture vers d’autres outils a été motivée par des besoins concrets : mieux documenter le projet, modéliser des idées de manière visuelle, analyser des données, ou tout simplement optimiser notre efficacité collective. L’ajout d’outils comme Visual Studio Code, Draw.io, Overleaf  témoigne de notre volonté d’adapter notre environnement de travail à la complexité croissante du projet, tout en développant une culture technologique plus large.
+
+Ces choix nous ont permis de progresser sur plusieurs plans :
+\begin{itemize}
+    \item \textbf{Sur le plan technique}, en consolidant notre maîtrise de Java et de ses bibliothèques, en comprenant les enjeux de la structuration modulaire (MVC), et en mettant en œuvre de bonnes pratiques de développement (design patterns, versioning, IHM).
+    \item \textbf{Sur le plan méthodologique}, en adoptant une démarche projet rigoureuse, avec gestion des versions, documentation collaborative, et répartition claire des responsabilités entre membres de l’équipe.
+    \item \textbf{Sur le plan professionnel}, en utilisant des outils modernes et réalistes, souvent utilisés dans l’industrie logicielle, et en développant une capacité à justifier nos choix techniques face à des contraintes concrètes.
+\end{itemize}
+
+En résumé, cette réflexion sur les choix technologiques n’est pas un simple inventaire : elle constitue la base de notre projet. Elle montre que nous avons su conjuguer encadrement académique et autonomie critique pour bâtir une solution logicielle pertinente, bien pensée, et adaptée à nos objectifs pédagogiques.
+
+Ce travail sur les outils et les technologies nous a également préparés à la suite du rapport, où nous présentons plus en détail l’architecture logique du système, les interactions entre ses composants, et les résultats obtenus dans le cadre de la simulation.
+
