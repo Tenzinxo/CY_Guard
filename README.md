@@ -31,7 +31,7 @@ capturer les intrus dynamiques, dans un environnement connu mais avec une visibi
 ## Utilisation
 
 1. **Téléchargement du projet**
-Téléchargez ou clonez les fichiers sources depuis le dépôt GitHub : [https://github.com/AirSoks/CY_Guard]
+Téléchargez ou clonez les fichiers sources depuis le dépôt GitHub : [https://github.com/Tenzinxo/CY_Guard]
 
 2. **Importation dans Eclipse**  
 - Ouvrez Eclipse.
@@ -50,7 +50,7 @@ Téléchargez ou clonez les fichiers sources depuis le dépôt GitHub : [https:/
   - Le fichier "Rapport_GARDIEN.pdf", au format pdf.
 
 ## Développement
-- Dépôt GitHub : [https://github.com/AirSoks/CY_Guard]
+- Dépôt GitHub : [https://github.com/Tenzinxo/CY_Guard]
 
 ## Auteurs
 - COSTA Mathéo, L2-C19
